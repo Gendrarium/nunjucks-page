@@ -1,9 +1,14 @@
 .wrapper {
 	position: relative;
+	font-family: 'Roboto', Arial, Helvetica, sans-serif;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
 }
 
 .container {
 	max-width: 980px;
 	margin: auto;
-	box-sizing: content-box;
+	@include box;
 }

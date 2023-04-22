@@ -1,0 +1,6 @@
+{% from '../../components/icon/icon.nunj' import icon %}
+
+<div class="logo">
+  {{ icon({ iconName: 'logo', className: 'logo__icon' }) }}
+  <span class="logo__span">.shop</span>
+</div>

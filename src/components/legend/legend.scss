@@ -1,0 +1,59 @@
+.legend {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+
+	&__span-container {
+		position: relative;
+	}
+
+	&__span {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: $main-page-color;
+		color: #fff;
+		border-radius: 9px;
+		width: 18px;
+		height: 18px;
+		font-weight: 500;
+		font-size: 10px;
+		line-height: 150%;
+		@include box;
+
+		&_active {
+			background-color: #fff;
+			color: #000;
+			border: 1px solid $main-page-color;
+		}
+
+		&_disabled {
+			background-color: #fff;
+			color: #d5d5d5;
+			border: 1px solid #d5d5d5;
+		}
+	}
+
+	&__title {
+		@extend .text-regular;
+		position: absolute;
+		top: 27px;
+		left: 50%;
+		transform: translate(-50%, 0);
+	}
+
+	&__line-container {
+		position: absolute;
+		width: 100%;
+		height: 1px;
+		background-color: #d5d5d5;
+		z-index: -1;
+		top: calc(50% - 0.5px);
+	}
+
+	&__line {
+		display: flex;
+		height: 1px;
+		background-color: $main-page-color;
+	}
+}

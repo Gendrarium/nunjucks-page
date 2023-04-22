@@ -1,0 +1,14 @@
+{% macro legend(props) %}
+	{% set numberOfPages = props.legends.length or 4 %}
+	<div class="legend{% if props.className %} {{ props.className }} {%- endif %}">
+		{% for i in range(1, numberOfPages + 1) %}
+			<div class="legend__span-container">
+				<span class="legend__span{% if i == props.currentPlace %} legend__span_active {%- elif i > props.currentPlace %} legend__span_disabled {%- endif %}">{{ i }}</span>
+				<h3 class="legend__title">{{ props.legends[i-1] }}</h3>
+			</div>
+		{% endfor %}
+		<div class="legend__line-container">
+			<span class="legend__line" style="width: {{ (props.currentPlace - 1) / (numberOfPages - 1) * 100 }}%"/>
+		</div>
+	</div>
+{% endmacro %}

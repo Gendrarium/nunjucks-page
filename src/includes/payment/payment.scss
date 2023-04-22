@@ -1,0 +1,85 @@
+.payment {
+	@include box;
+	padding: 20px 30px 44px;
+	max-width: 550px;
+	border: 1px solid $border-line-color;
+	box-shadow: 0px 0px 32px rgba(0, 0, 0, 0.19);
+	border-radius: 5px;
+	display: grid;
+	align-items: end;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 20px 30px;
+	grid-template-areas:
+		'name name name name'
+		'number-one number-two number-three number-four'
+		'expire cvv . .';
+
+	@include max-screen(599px) {
+		box-shadow: none;
+		border: none;
+		border-radius: none;
+		max-width: none;
+		padding: 0;
+		width: 100%;
+		gap: 20px 5px;
+	}
+
+	&__name {
+		grid-area: name;
+	}
+
+	&__number {
+		&_one {
+			grid-area: number-one;
+		}
+
+		&_two {
+			grid-area: number-two;
+		}
+
+		&_three {
+			grid-area: number-three;
+		}
+
+		&_four {
+			grid-area: number-four;
+		}
+	}
+
+	&__expire {
+		grid-area: expire;
+	}
+
+	&__cvv {
+		grid-area: cvv;
+	}
+
+	&__title-container {
+		display: flex;
+		align-items: center;
+	}
+
+	&__title {
+		@extend .text-medium;
+		color: #555770;
+	}
+
+	&__title-span {
+		margin: 0 0 2px 5px;
+		width: 13px;
+		height: 13px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: #dbdbdb;
+		border-radius: 7px;
+		font-weight: 400;
+		font-size: 10px;
+		line-height: 150%;
+		cursor: help;
+	}
+
+	&__input {
+		width: 100%;
+	}
+}

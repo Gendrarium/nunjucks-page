@@ -3,33 +3,39 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	border: 2px solid rgba(#000, 0.3);
-	height: 54px;
-	font-weight: 700;
+	border: none;
+	border-radius: 3px;
+	height: 40px;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 24px;
+	background-color: $main-page-color;
+	color: #fff;
 	cursor: pointer;
-	font-size: 16px;
-	letter-spacing: -0.5px;
-	padding: 1px 20px 0;
 
 	&:hover {
-		background-color: rgba(#000, 0.3);
-		color: rgba(#000, 0.8);
+		background-color: rgba($main-page-color, 0.3);
+		color: rgba(#fff, 0.8);
 		transition: none;
 	}
 
 	&:active {
-		background-color: rgba(#000, 0.25);
-		border-color: rgba(#000, 0.25);
-
-		.button__chevron-right {
-			transform: translateX(1px);
-			transition: none;
-		}
+		background-color: rgba($main-page-color, 0.25);
 	}
 
-	&__chevron-right {
-		margin-left: 5px;
-		transition: transform 0.1s ease-out,
-			fill $default-transition-duration $default-transition-function;
+	&_white {
+		color: #000;
+		background-color: #fff;
+		border: 1px solid $border-line-color;
+
+		&:hover {
+			background-color: rgba(#fff, 0.3);
+			color: rgba(#000, 0.8);
+			transition: none;
+		}
+
+		&:active {
+			background-color: rgba(#fff, 0.25);
+		}
 	}
 }

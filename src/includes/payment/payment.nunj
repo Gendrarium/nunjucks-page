@@ -1,0 +1,32 @@
+{% from '../../components/input/input.nunj' import input %}
+
+<div class="payment">
+	<div class="payment__name">
+		<h2 class="payment__title">Name on card</h2>
+		{{ input({type: 'text', placeholder: 'Placeholder Text', className: 'payment__input' }) }}
+	</div>
+	<div class="payment__number payment__number_one">
+		<h2 class="payment__title">Card number</h2>
+		{{ input({type: 'number', className: 'payment__input' }) }}
+	</div>
+	<div class="payment__number payment__number_two">
+		{{ input({type: 'number', className: 'payment__input' }) }}
+	</div>
+	<div class="payment__number payment__number_three">
+		{{ input({type: 'number', className: 'payment__input' }) }}
+	</div>
+	<div class="payment__number payment__number_four">
+		{{ input({type: 'number', className: 'payment__input' }) }}
+	</div>
+	<div class="payment__expire">
+		<h2 class="payment__title">Expire date</h2>
+		{{ input({ className: 'payment__input' }) }}
+	</div>
+	<div class="payment__cvv">
+		<div class="payment__title-container">
+			<h2 class="payment__title">CVV code</h2>
+			<span class="payment__title-span">?</span>
+		</div>
+		{{ input({type: 'number', className: 'payment__input' }) }}
+	</div>
+</div>

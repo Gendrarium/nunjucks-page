@@ -16,6 +16,27 @@
 	pointer-events: none;
 }
 
+.text-regular {
+	font-style: normal;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 16px;
+}
+
+.text-medium {
+	font-style: normal;
+	font-weight: 500;
+	font-size: 12px;
+	line-height: 24px;
+}
+
+.text-bold {
+	font-style: normal;
+	font-weight: 700;
+	font-size: 18px;
+	line-height: 21px;
+}
+
 // ._dragging, ._dragging * {
 // 	cursor: ew-resize;
 // 	cursor: grabbing;

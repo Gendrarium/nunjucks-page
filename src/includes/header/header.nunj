@@ -1,7 +1,12 @@
-{% from "../../components/menu/menu.nunj" import menu %}
+{% from '../../components/icon/icon.nunj' import icon %}
 
-<div class="header">
-	<div class="container">
-		{{ menu() }}
-	</div>
-</div>
+<header class="header">
+  <div class="header__container">
+    {% include '../logo/logo.nunj' %}
+    <div class="header__icons">
+      <button class="header__button">{{ icon({ iconName: 'search', className: 'header__icon' }) }}</button>
+      <button class="header__button header__button_cart"><span class="header__cart-num">2</span>{{ icon({ iconName: 'cart', className: 'header__icon' }) }}</button>
+      <button class="header__button header__button_burger">{{ icon({ iconName: 'burger', className: 'header__icon header__icon_burger' }) }}</button>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,19 @@
+{% from '../icon/icon.nunj' import icon %}
+
+{% macro cartCard(props) %}
+	<article class="cart-card {% if props.cardClassName -%} {{ props.cardClassName }} {%- endif %}">
+		<img class="cart-card__img" src="{{ props.imageSrc }}" alt="{{ props.title }}"/>
+		<div class="cart-card__right-container">
+			<div class="cart-card__title-container">
+				<h3 class="cart-card__title">{{ props.title }}</h3>
+				<div class="cart-card__arithmetic-container">
+					<button class="cart-card__button">{{ icon({ iconName: 'minus', className: 'cart-card__arithmetic-icon' }) }}</button>
+					<span class="cart-card__amount">{{ props.amount }}</span>
+					<button class="cart-card__button">{{ icon({ iconName: 'plus', className: 'cart-card__arithmetic-icon' }) }}</button>
+					<span class="cart-card__price">$ {{ props.price }}</span>
+				</div>
+			</div>
+			<button class="cart-card__button">{{ icon({ iconName: 'cross', className: 'cart-card__cross-icon' }) }}</button>
+		</div>
+	</article>
+{% endmacro %}

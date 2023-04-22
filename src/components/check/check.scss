@@ -1,0 +1,44 @@
+.check {
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+
+	&__input-container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border: 1px solid $border-line-color;
+		border-radius: 9px;
+		width: 18px;
+		height: 18px;
+		@include box;
+
+		&_box {
+			border-radius: 0px;
+		}
+	}
+
+	&__input {
+		display: none;
+
+		&:checked + .check__span {
+			background-color: $main-page-color;
+		}
+	}
+
+	&__span {
+		display: block;
+		border-radius: 5px;
+		width: 8px;
+		height: 8px;
+
+		&_box {
+			border-radius: 0px;
+		}
+	}
+
+	&__title {
+		@extend .text-regular;
+		margin-left: 9px;
+	}
+}

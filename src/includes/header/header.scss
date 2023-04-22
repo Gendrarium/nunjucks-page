@@ -1,4 +1,86 @@
 .header {
-	padding: 20px 0;
-	background: #ccc;
+	padding: 26px 30px 22px;
+	border-bottom: 1px solid $border-line-color;
+	flex: 0 1 auto;
+	display: flex;
+
+	@include max-screen(599px) {
+		padding: 26px 10px 22px;
+	}
+
+	&__container {
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+		min-height: 32px;
+	}
+
+	&__icons {
+		margin-top: auto;
+		display: flex;
+	}
+
+	&__button {
+		position: relative;
+		background-color: rgba(0, 0, 0, 0);
+		border: none;
+		margin-right: 26px;
+		cursor: pointer;
+
+		&:last-of-type {
+			margin-right: 0;
+		}
+
+		&_cart {
+			display: flex;
+			margin-top: auto;
+			margin-bottom: auto;
+			margin-right: 6px;
+
+			@include max-screen(1023px) {
+				margin-right: 31px;
+			}
+
+			@include max-screen(599px) {
+				margin-right: 32px;
+			}
+		}
+
+		&_burger {
+			display: none;
+			align-self: flex-end;
+
+			@include max-screen(1023px) {
+				display: block;
+			}
+		}
+	}
+
+	&__icon {
+		width: 24px;
+		height: 24px;
+		fill: #000;
+
+		&_burger {
+			width: 29px;
+			height: 22px;
+		}
+	}
+
+	&__cart-num {
+		position: absolute;
+		top: -6px;
+		right: -6px;
+		background-color: $main-page-color;
+		width: 13px;
+		height: 13px;
+		border-radius: 7px;
+		font-weight: 400;
+		font-size: 10px;
+		line-height: 12px;
+		color: #fff;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
 }

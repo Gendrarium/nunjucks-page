@@ -1,0 +1,13 @@
+{% macro input(props) %}
+	<input
+		class="input {% if props.className -%} {{ props.className }}{%- endif %}"
+		{% if props.type %}type="{{ props.type }}"{% endif %}
+		{% if props.name %}name="{{ props.name }}"{% endif %}
+		{% if props.type != 'number' and props.maxlength %}
+			maxlength="{{ props.maxlength }}"
+		{% elif props.type == 'number' and props.maxlength %}
+			max="{{ props.maxlength }}"
+		{% endif %}
+		{% if props.placeholder %}placeholder="{{ props.placeholder }}"{% endif %}
+	>
+{% endmacro %}

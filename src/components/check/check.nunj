@@ -1,0 +1,21 @@
+{% from '../icon/icon.nunj' import icon %}
+
+{% macro check(props) %}
+	<label class="check{% if props.className %} {{ props.className }} {%- endif %}">
+		<div class="check__input-container{% if props.type === 'checkbox' %} check__input-container_box {%- endif %}{% if props.inputClassName %} {{ props.inputClassName }} {%- endif %}">
+			<input
+				type="{{ props.type }}"
+				class="check__input"
+				{% if props.className %} name="{{ props.name }}" {%- endif %}
+				{% if props.checked %} checked {%- endif %}
+			>
+			<span class="check__span{% if props.type === 'checkbox' %} check__span_box {%- endif %}"/>
+		</div>
+		{% if props.text %}
+			<span class='check__title{% if props.textClassName %} {{ props.textClassName }} {%- endif %}'>{{ props.text }}</span>
+		{%- endif %}
+		{% if props.icon %}
+			{{ icon({iconName: props.iconName, className: props.iconClassName}) }}
+		{%- endif %}
+	</label>
+{% endmacro %}

@@ -9,9 +9,15 @@
 
 // ======= COMPONENTS =======
 @import '../../components/button/button';
+@import '../../components/cartCard/cartCard';
+@import '../../components/input/input';
+@import '../../components/check/check';
+@import '../../components/legend/legend';
 
 // ======= INCLUDES =======
 @import '../../includes/header/header';
+@import '../../includes/logo/logo';
+@import '../../includes/payment/payment';
 
 // ======= PAGES =======
-@import 'pages/main';
+@import 'pages/cart';

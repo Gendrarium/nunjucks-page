@@ -1,72 +1,154 @@
-{% extends "../templates/base.nunj" %}
+{% extends '../templates/base.nunj' %}
 
-{% from "../components/button/button.nunj" import button %}
-{% from "../components/icon/icon.nunj" import icon %}
+{% from '../components/button/button.nunj' import button %}
+{% from '../components/input/input.nunj' import input %}
+{% from '../components/check/check.nunj' import check %}
+{% from '../components/icon/icon.nunj' import icon %}
+{% from '../components/legend/legend.nunj' import legend %}
+{% from '../components/cartCard/cartCard.nunj' import cartCard %}
 
 {# Пример расширения существующего блока #}
 {# Например можно использовать для добавления уникальных тайтлов для каждой страницы #}
 {# {% block title %}Home / {{ super() }}{% endblock title %} #}
 
 {% block content %}
-
 	{% include '../includes/header/header.nunj' %}
 
-	<div class="container">
-
-		<div style="padding:20px 0;">
-			{{ button({
-				className: '',
-				children: 'Buy something',
-				chevronRight: true
+	<main class="cart">
+		<div class="cart__left-column">
+			{{ legend({
+				className: "cart__legend",
+				currentPlace: 3,
+				legends: ['Account', 'Shipping', 'Billing', 'Review']
 			}) }}
-		</div>
-
-		<div style="padding:20px 0;">
-
-			<h2 style="margin-bottom: 15px;">Пример использования циклов и функции range():</h2>
-
-			<div class="row">
-				{% for i in range(1, 13)  %}
-					<span>{{ i }}</span>
-				{% endfor %}
-			</div>
-
-		</div>
-
-		<div style="padding:20px 0;">
-
-			<h2 style="margin-bottom: 15px;">Пример с переменными:</h2>
-
-			{% for item in someData %}
-				<div style="margin-bottom: 15px;">
-					<h3>{{ item.title }}</h3>
-					<p>{{ item.text }}</p>
+			<section class="cart__payment">
+				<div class="cart__payment-container">
+					<h2 class="cart__title">Billing Information</h2>
+					<div class="cart__radio-container">
+						{{ check({
+							type: "radio",
+							className: "cart__radio",
+							name: "payment",
+							checked: true,
+							text: "Pay with Credit Card"
+						}) }}
+						{{ check({
+							type: "radio",
+							className: "cart__radio",
+							name: "payment",
+							icon: true,
+							iconName: "paypal",
+							iconClassName: "cart__radio-icon"
+						}) }}
+					</div>
 				</div>
-			{% endfor %}
-
+				{% include '../includes/payment/payment.nunj' %}
+				<div class="cart__checkbox-container">
+					{{ check({
+						type: "checkbox",
+						className: "cart__checkbox",
+						name: "saveCard",
+						checked: true,
+						textClassName: "cart__checkbox-text",
+						text: "Save information of this credit card"
+					}) }}
+					{{ check({
+						type: "checkbox",
+						className: "cart__checkbox",
+						name: "acceptTerms",
+						inputClassName: "cart__checkbox-input",
+						textClassName: "cart__checkbox-text",
+						text: "I accept the <a class='cart__checkbox-text_link' href='#'>terms and comditions</a> and the <a class='cart__checkbox-text_link' href='#'>Privacy Policies</a>"
+					}) }}
+				</div>
+				<div class="cart__buttons-container">
+					{{ button({ children: "Back", className: "cart__button cart__button_back", white: true }) }}
+					{{ button({ children: "Check Out", className: "cart__button cart__button_next" }) }}
+				</div>
+			</section>
 		</div>
-
-		{# Пример с функциями #}
-		<p style="margin-bottom: 20px;">{{ addAwesome('Это текст для теста функций') }}</p>
-
-		{% if DEVELOP %}
-			<div class="debug" style="margin-bottom: 20px;">
-				<h2 style="margin-bottom: 15px;">Debug:</h2>
-				<p>Эта информация будет выводиться только при DEVELOP = true.</p>
-			</div>
-		{% endif %}
-
-		<div style="padding:20px 0;">
-
-			<h2 style="margin-bottom: 15px;">Пример использования SVG-спрайта</h2>
-
-			{{ icon({
-				iconName: 'chat',
-				className: 'icon',
-				attributes: 'viewBox="0 0 20 20" style="width: 40px; height: 40px; fill: #212121;"'
-			}) }}
-
+		<div class="cart__right-column">
+			<section class="cart__purchases">
+				<h2 class="cart__title">My basket</h2>
+				{{ cartCard({ title: "Amet minim mollit non deserunt ullamco est sit", imageSrc: "/assets/images/jacket.png", cardClassName: "cart__card", price: 525, amount: 1 }) }}
+				{{ cartCard({ title: "Amet minim mollit non", imageSrc: "/assets/images/boots.png", cardClassName: "cart__card", price: 525, amount: 1 }) }}
+			</section>
+			<section class="cart__promo-code">
+				<h2 class="cart__title">Promo code</h2>
+				<div class="cart__input-container">
+					{{ input({ placeholder: "Placeholder Text" }) }}
+					{{ button({ children: "Apply", className: "cart__button" }) }}
+				</div>
+			</section>
+			<section class="cart__total">
+				<ul class="cart__total-ul">
+					{% for item in[
+						{
+							text: "Subtotal",
+							style: "normal",
+							price: 0
+						}, {
+							text: "Tax",
+							style: "normal",
+							price: 100
+						}, {
+							text: "Shipping",
+							style: "normal",
+							price: 150
+						}, {
+							text: "Total",
+							style: "bold",
+							price: 0
+						}
+					] %}
+						<li class="cart__total-li{% if item.style === 'bold' %} cart__total-li_bold {%- endif %}">
+							<span>{{ item.text }}</span>
+							<span>${{ item.price }}</span>
+						</li>
+					{% endfor %}
+				</ul>
+			</section>
 		</div>
-
-	</div>
+	</main>
 {% endblock %}
+
+{# <div class="container">
+    <div style="padding:20px 0;">{{ button({ className: '', children: 'Buy something', chevronRight: true }) }}</div>
+
+    <div style="padding:20px 0;">
+      <h2 style="margin-bottom: 15px;">Пример использования циклов и функции range():</h2>
+
+      <div class="row">
+        {% for i in range(1, 13) %}
+          <span>{{ i }}</span>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div style="padding:20px 0;">
+      <h2 style="margin-bottom: 15px;">Пример с переменными:</h2>
+
+      {% for item in someData %}
+        <div style="margin-bottom: 15px;">
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.text }}</p>
+        </div>
+      {% endfor %}
+    </div>
+#}
+{# Пример с функциями #}
+{#<p style="margin-bottom: 20px;">{{ addAwesome('Это текст для теста функций') }}</p>
+
+    {% if DEVELOP %}
+      <div class="debug" style="margin-bottom: 20px;">
+        <h2 style="margin-bottom: 15px;">Debug:</h2>
+        <p>Эта информация будет выводиться только при DEVELOP = true.</p>
+      </div>
+    {% endif %}
+
+    <div style="padding:20px 0;">
+      <h2 style="margin-bottom: 15px;">Пример использования SVG-спрайта</h2>
+
+      {{ icon({ iconName: 'chat', className: 'icon', attributes: 'viewBox="0 0 20 20" style="width: 40px; height: 40px; fill: #212121;"' }) }}
+    </div>
+  </div> #}
