@@ -1,6 +1,7 @@
 .cart {
 	flex: 1 1 auto;
 	display: flex;
+	position: relative;
 
 	&__left-column {
 		flex: 1 1 auto;
@@ -29,6 +30,7 @@
 		max-width: 660px;
 		margin: 0 auto;
 		padding-right: 30px;
+		padding-bottom: 30px;
 
 		@include max-screen(1279px) {
 			margin: 0;
@@ -37,15 +39,18 @@
 
 		@include max-screen(1023px) {
 			margin: 0 auto;
-			padding: 0 9px 0 0;
+			padding-right: 9px;
+			padding-left: 0px;
 		}
 
 		@include max-screen(767px) {
-			padding: 0 30px;
+			padding-right: 30px;
+			padding-left: 30px;
 		}
 
 		@include max-screen(599px) {
-			padding: 0 10px;
+			padding-right: 10px;
+			padding-left: 10px;
 		}
 	}
 
@@ -141,12 +146,30 @@
 	}
 
 	&__right-column {
+		background-color: #fff;
 		flex: 0 1 410px;
 		border-left: 1px solid $border-line-color;
 		@include box;
+		height: 100%;
 
 		@include max-screen(1023px) {
 			display: none;
+			min-width: 410px;
+		}
+
+		@include max-screen(599px) {
+			border-left: none;
+			width: 100%;
+			min-width: 0;
+		}
+
+		&_absolute {
+			@include max-screen(1023px) {
+				display: block;
+				position: absolute;
+				top: 0;
+				right: 0;
+			}
 		}
 	}
 
@@ -157,6 +180,10 @@
 	&__purchases {
 		padding: 40px;
 		border-bottom: 1px solid $border-line-color;
+
+		@include max-screen(599px) {
+			padding: 10px;
+		}
 	}
 
 	&__card {
@@ -170,6 +197,10 @@
 	&__promo-code {
 		border-bottom: 1px solid $border-line-color;
 		padding: 40px;
+
+		@include max-screen(599px) {
+			padding: 10px;
+		}
 	}
 
 	&__input-container {
@@ -206,6 +237,10 @@
 
 	&__total {
 		padding: 48px 55px 40px 40px;
+
+		@include max-screen(599px) {
+			padding: 10px;
+		}
 	}
 
 	&__total-li {
